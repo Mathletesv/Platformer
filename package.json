@@ -1,0 +1,13 @@
+{
+    "name": "platformer",
+    "version": "1.0.0",
+    "description": "A platformer that I eventually plan to make multiplayer.\r The player is a circle.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "http-server -p 80",
+        "push": "firebase deploy --only hosting:epic-platformer && git push origin master"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
