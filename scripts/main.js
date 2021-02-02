@@ -48,7 +48,7 @@ function update() {
 }
 
 function playerupdate(delta) {
-    player.yvel += 150 * delta;
+    player.yvel += 500 * delta;
     player.xvel = keys.vel(speed);
     player.x += player.xvel * delta;
     player.y += player.yvel * delta;
@@ -73,7 +73,7 @@ document.onkeydown = function(e) {
         case "ArrowUp":
             collision = map.collision(player.x + 15, player.y + 15.1);
             if (collision[1] != 0) {
-                player.yvel = -200;
+                player.yvel = -400;
             }
             break;
         case "ArrowRight":
@@ -85,7 +85,7 @@ document.onkeydown = function(e) {
         case "KeyW":
             collision = map.collision(player.x + 15, player.y + 15.1);
             if (collision[1] != 0) {
-                player.yvel = -200;
+                player.yvel = -400;
             }
             break;
         case "KeyD":

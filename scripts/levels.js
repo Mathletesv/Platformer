@@ -6,7 +6,7 @@ export let levelData = [{
     "name": "Tutorial",
     "shapes": [
         new Rectangle(50, 50, 10, 20, "green", false),
-        new Rectangle(0, 250, 100, 10, "green", true),
+        new Circle(0, 250, 50, "yellow", true),
         new Moving([{
                 "pos": {
                     "x": 25,
