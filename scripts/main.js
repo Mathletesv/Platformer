@@ -34,7 +34,7 @@ function update() {
     time = new Date().getTime();
     while (delta > 20) {
         map.update(20 / 1000);
-        playerupdate(20);
+        playerupdate(20 / 1000);
         delta -= 20;
     }
     ctx.clearRect(0, 0, 1600, 900);
