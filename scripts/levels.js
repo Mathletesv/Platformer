@@ -35,7 +35,7 @@ export let levelData = [{
                 },
                 "speed": 100
             }
-        ], [0, 1, 2, 3], new Rectangle(25, 50, 100, 25, "blue", true)),
+        ], [0, 1, 2, 3], new Rectangle(25, 50, 100, 50, "blue", false)),
         new Rectangle(0, 350, 500, 500, "orange", false)
         /*new Polygon([
             [50, 50],
