@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "http-server -p 80",
-        "deply": "firebase deploy --only hosting:epic-platformer",
+        "deploy": "firebase deploy --only hosting:epic-platformer",
         "commit": "git add . && git commit -a",
         "push": "git push origin master",
         "update": "npm run deploy && npm run push"
