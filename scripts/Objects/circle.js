@@ -23,9 +23,10 @@ export default class Circle {
     collision(x, y) {
         let distance = Math.sqrt((x - this.coords[0]) ** 2 + (y - this.coords[1]) ** 2);
         if (distance >= 15 + this.radius) {
-            return false;
+            return [0, 0];
         } else {
-            let arr = [0, 0, this.death];
+            if (this.death) return true;
+            let arr = [0, 0];
             let ratio = (distance - 15 - this.radius) / distance;
             if (x != this.coords[0]) {
                 arr[0] = ratio * (x - this.coords[0]);

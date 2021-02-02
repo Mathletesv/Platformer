@@ -12,6 +12,8 @@ let map = new Map(levelData);
 let player = new Player(map.spawn);
 let keys = new Keys();
 let delta = 0;
+let accumulator = 0;
+const timestep = 1 / 60;
 let time = new Date().getTime();
 let collision;
 
@@ -30,25 +32,26 @@ scaler();
 window.onresize = scaler;
 
 function update() {
-    delta = new Date().getTime() - time;
+    delta = new Date().getTime() - time + accumulator;
+    accumulator = 0;
     time = new Date().getTime();
-    while (delta > 20) {
-        map.update(20 / 1000);
-        playerupdate(20 / 1000);
-        delta -= 20;
+    while (delta > 1000 * timestep) {
+        map.update(timestep);
+        playerupdate(timestep);
+        delta -= 1000 * timestep;
     }
+    accumulator = delta;
     ctx.clearRect(0, 0, 1600, 900);
     map.draw(-player.x + 800 - 15, -player.y + 500 - 15, ctx);
-    map.update(delta / 1000);
-    playerupdate(delta / 1000);
+    player.playerdraw(ctx);
     requestAnimationFrame(update);
 }
 
 function playerupdate(delta) {
-    player.yvel += 9.8 * delta;
+    player.yvel += 150 * delta;
     player.xvel = keys.vel(speed);
     player.x += player.xvel * delta;
-    player.y += player.yvel;
+    player.y += player.yvel * delta;
     collision = map.collision(player.x + 15, player.y + 15);
     if (collision == true) {
         player.reset(map.spawn);
@@ -61,7 +64,6 @@ function playerupdate(delta) {
             player.yvel = 0;
         }
     }
-    player.playerdraw(ctx);
 }
 
 requestAnimationFrame(update);
@@ -71,7 +73,7 @@ document.onkeydown = function(e) {
         case "ArrowUp":
             collision = map.collision(player.x + 15, player.y + 15.1);
             if (collision[1] != 0) {
-                player.yvel = -5;
+                player.yvel = -200;
             }
             break;
         case "ArrowRight":
@@ -83,7 +85,7 @@ document.onkeydown = function(e) {
         case "KeyW":
             collision = map.collision(player.x + 15, player.y + 15.1);
             if (collision[1] != 0) {
-                player.yvel = -7.5;
+                player.yvel = -200;
             }
             break;
         case "KeyD":
